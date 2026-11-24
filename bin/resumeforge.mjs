@@ -5,7 +5,9 @@ import { fileURLToPath } from "node:url";
 import { buildHtml, fileStem, listTemplates } from "../src/build.mjs";
 import { printPdf, renderFitted } from "../src/render.mjs";
 import { lintResume, printReport, verifyPdf } from "../src/verify.mjs";
-import { deploySite, writeSite } from "../src/site.mjs";
+import { deploySite, writeSite, writeStaticSite } from "../src/site.mjs";
+import { buildBrief, briefProbes } from "../src/brief.mjs";
+import { extractText } from "../src/verify.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const HISTORY = resolve(".resumeforge", "history.json");
@@ -22,6 +24,8 @@ Usage
   resumeforge site <resume.json> [opts]   pdf + a static noindex site folder for Vercel
   resumeforge deploy <siteDir>            vercel deploy --prod (needs vercel login or VERCEL_TOKEN)
   resumeforge all <resume.json> [opts]    lint + pdf + verify + site (+ --deploy)
+  resumeforge brief <brief.json> [opts]   two-sheet "why this role fits" brief: html + pdf + verify
+                                          (--site-dir <dir> also writes a site, --deploy publishes it)
 
 Options
   --template <name>     theme (default: resume.json "template", else first unused one)
@@ -201,6 +205,37 @@ function main() {
           const { url } = deploySite(r.siteDir);
           console.log(url ? `live: ${url}` : "deployed; see the Vercel output for the URL");
         }
+        break;
+      }
+      case "brief": {
+        const data = readJson(target);
+        const outDir = resolve(args.out ?? "out");
+        mkdirSync(outDir, { recursive: true });
+        const stem = (data.fileName ?? `${data.name}_Why_This_Role_Fits`).replace(/\.pdf$/i, "").replace(/[^A-Za-z0-9]+/g, "_").replace(/^_|_$/g, "");
+        const htmlPath = join(outDir, `${stem}.html`);
+        const pdfPath = join(outDir, `${stem}.pdf`);
+        writeFileSync(htmlPath, buildBrief(data, { site: true, pdfName: `${stem}.pdf` }));
+        printPdf(htmlPath, pdfPath);
+        console.log(`html: ${htmlPath}\npdf:  ${pdfPath}`);
+        const report = verifyPdf(pdfPath, { maxPages: 2, name: undefined, keywords: keywordsOf(args, data), allowDashes: !!args.allowDashes });
+        const text = (extractText(pdfPath) ?? "").toLowerCase().replace(/\s+/g, " ");
+        if (text) {
+          for (const p of briefProbes(data)) {
+            const ok = text.includes(p.text.toLowerCase().replace(/\s+/g, " "));
+            report.checks.push({ level: ok ? "PASS" : "FAIL", check: "not clipped", detail: `${p.where}${ok ? "" : ": text missing, the sheet overflowed; trim content"}` });
+          }
+          if (report.checks.some((c) => c.level === "FAIL")) report.status = "FAIL";
+        }
+        printReport("verify", report);
+        if (args.siteDir) {
+          const siteDir = writeStaticSite(resolve(args.siteDir), readFileSync(htmlPath, "utf8"), pdfPath);
+          console.log(`site: ${siteDir}`);
+          if (args.deploy) {
+            const { url } = deploySite(siteDir);
+            console.log(url ? `live: ${url}` : "deployed; see the Vercel output for the URL");
+          }
+        }
+        process.exitCode = report.status === "FAIL" ? 1 : 0;
         break;
       }
       default:

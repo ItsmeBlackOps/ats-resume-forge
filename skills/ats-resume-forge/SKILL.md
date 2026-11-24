@@ -1,6 +1,6 @@
 ---
 name: ats-resume-forge
-description: Build truthful, ATS-safe resumes and ship them as a verified PDF and an optional Vercel web page. Use when the user asks to write, rewrite, tailor, ATS-optimize, or "match" a resume to a job description; pastes a resume plus a JD; asks for a resume PDF, a resume website, or a new resume template; or wants interview questions that expose gaps in a resume. Works for any candidate, role, or seniority.
+description: Build truthful, ATS-safe resumes and ship them as a verified PDF and an optional Vercel web page. Use when the user asks to write, rewrite, tailor, ATS-optimize, or "match" a resume to a job description; pastes a resume plus a JD; asks for a resume PDF, a resume website, or a new resume template; wants a "why this role fits" brief for a candidate, or wants interview questions that expose gaps in a resume. Works for any candidate, role, or seniority.
 ---
 
 # ATS Resume Forge
@@ -66,7 +66,10 @@ resumeforge deploy out/<candidate>/site-<name>
 ```
 The site is a static `index.html` with a Download PDF button, the PDF itself, and a `vercel.json` that sends `X-Robots-Tag: noindex, nofollow`. Deploying needs `vercel login` or a `VERCEL_TOKEN` in the environment. Tell the user the URL is public to anyone who has it.
 
-### 9. Hand-off
+### 9. Fit brief (optional)
+When the user asks for a "why this role fits" document, write `candidates/<name>-brief.json` following `references/fit-brief-json.md` and run `resumeforge brief`. It produces a two-sheet press-proof brief: a requirement register (every posted requirement beside its evidence, partial matches marked with an offset mark and a plain note), plus optional diagrams for one real story, the system the role supports, how the candidate works, and a to-scale timeline. Third person, no coaching language, safe to forward. The command fails if a sheet overflowed and clipped content; trim and rerun.
+
+### 10. Hand-off
 Report: the PDF path, the site URL if deployed, the verification table, the requirements still partial or missing (stated plainly), and five to ten interview questions an interviewer is likely to ask about the riskiest bullets, so the candidate can rehearse.
 
 ## Reference files
@@ -74,6 +77,7 @@ Report: the PDF path, the site URL if deployed, the verification table, the requ
 | File | Use it for |
 |---|---|
 | `references/resume-json.md` | The `resume.json` schema this CLI renders |
+| `references/fit-brief-json.md` | The fit brief schema and its two-sheet layout |
 | `references/knowledge-base-extraction.md` | Building the evidence inventory |
 | `references/jd-decomposition.md` | Parsing a job description |
 | `references/jd-signal-universe.md` | Keyword families and adjacent-skill bridges |

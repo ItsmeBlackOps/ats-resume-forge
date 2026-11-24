@@ -26,6 +26,18 @@ export function writeSite(data, { siteDir, pdfPath, template, fontSize, accent }
   return resolve(siteDir);
 }
 
+/** Write a static noindex site from ready-made HTML plus its PDF. */
+export function writeStaticSite(siteDir, html, pdfPath) {
+  mkdirSync(siteDir, { recursive: true });
+  copyFileSync(pdfPath, join(siteDir, basename(pdfPath)));
+  writeFileSync(join(siteDir, "index.html"), html);
+  writeFileSync(
+    join(siteDir, "vercel.json"),
+    JSON.stringify({ cleanUrls: true, headers: [{ source: "/(.*)", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] }] }, null, 2) + "\n"
+  );
+  return resolve(siteDir);
+}
+
 /**
  * Deploy a site folder to Vercel production. Needs a logged-in Vercel CLI or
  * VERCEL_TOKEN in the environment. The project name is the folder name.

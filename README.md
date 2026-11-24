@@ -7,10 +7,11 @@ An open-source resume builder made for AI agents and for people. Give it a `resu
 - **Verifies every PDF.** Page count, selectable text, name first, section headings, must-have keywords, no em/en dashes, no browser header or footer junk.
 - **Honesty checks.** `lint` flags skills that are listed but never evidenced in a bullet, overlong bullets, and lopsided role weighting.
 - **One command to a website.** A static, `noindex` page with a Download PDF button, deployable to Vercel.
+- **"Why this role fits" briefs.** A two-sheet, press-proof style brief: every posted requirement beside its evidence, partial matches marked honestly, plus diagrams drawn from data (a story rail, a system diagram, a to-scale timeline).
 - **Agent skill included.** `skills/ats-resume-forge/SKILL.md` teaches Claude Code (or any coding agent) the full workflow: evidence inventory, job decomposition, gap questions, truthful tailoring, render, verify, deploy.
 - **Zero dependencies.** Node 18+ and Chrome, Edge or Chromium. `pdftotext` (poppler) enables the text checks.
 
-Live demo (fictional candidate): https://ats-resume-forge-demo.vercel.app
+Live demos (fictional candidate): [resume](https://ats-resume-forge-demo.vercel.app) and [fit brief](https://ats-resume-forge-brief-demo.vercel.app)
 
 ![The seven templates](docs/templates-overview.png)
 
@@ -40,6 +41,7 @@ Optional: `npm link` once, then use `resumeforge` anywhere.
 | `site <resume.json>` | PDF plus a static site folder ready for Vercel |
 | `deploy <siteDir>` | `vercel deploy --prod` (needs `vercel login` or `VERCEL_TOKEN`) |
 | `all <resume.json>` | lint, pdf, verify and site in one go; add `--deploy` to publish |
+| `brief <brief.json>` | Two-sheet fit brief: HTML, PDF, verification and a clipping check; `--site-dir` and `--deploy` publish it |
 
 Useful options: `--template <name>`, `--out <dir>`, `--max-pages <n>`, `--font-size <pt>`, `--accent <#hex>`, `--keywords <a,b>`, `--site-dir <dir>`.
 
@@ -93,6 +95,12 @@ This repository contains **no real resumes**. The only candidate in it, Alex Riv
 | `pill` | Violet reversed pill headings |
 
 Adding one is a single CSS file in `templates/` plus an entry in `templates/manifest.json`. Keep it single column and text only.
+
+## Fit brief
+
+![The two sheets of a fit brief](docs/fit-brief-overview.png)
+
+`resumeforge brief examples/sample-fit-brief.json --out out/brief` renders the sample. Sheet 1 is the requirement register; sheet 2 carries the diagrams, each optional and drawn from the JSON. Because the sheets are a fixed size, the command checks that nothing was clipped and fails if a sheet overflowed. Schema: `skills/ats-resume-forge/references/fit-brief-json.md`.
 
 ## Contributing
 

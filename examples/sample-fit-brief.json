@@ -1,0 +1,88 @@
+{
+  "$comment": "FICTIONAL SAMPLE. Alex Rivera, Tailspin Analytics, every employer and every number here is invented for demonstration.",
+  "name": "Alex Rivera",
+  "role": "Senior Data Engineer",
+  "company": "Tailspin Analytics",
+  "roleLine": "Why the Senior Data Engineer role at Tailspin Analytics fits",
+  "date": "2026-11-23",
+  "revision": "1",
+  "fitStatement": "Six years building batch and streaming pipelines on **AWS**, on the stack this posting names: **Spark**, **Airflow**, **Snowflake** and **dbt**, with **Kafka** ingestion and **Terraform** infrastructure. Owns the data quality tests behind finance and operations reporting. Two requirements are met only in part, Unity Catalog governance and on-call leadership, and are marked partial below rather than rounded up.",
+  "checks": [
+    { "label": "Experience band 5+ years", "text": "six years in data roles, March 2023 to date as Senior Data Engineer" },
+    { "label": "Preferred", "text": "Delta Lake, mentoring and CI/CD, all in register" },
+    { "label": "Certifications", "text": "AWS Data Engineer Associate and SnowPro Core, held" }
+  ],
+  "requirements": [
+    { "requirement": "5+ years of data engineering experience", "status": "met", "evidence": "Data Engineer since June 2020 and Senior Data Engineer since March 2023, after two years as a data analyst." },
+    { "requirement": "Strong Python and SQL", "status": "met", "evidence": "**PySpark** jobs on 2.5 TB a day; **SQL** linting in CI; Python automation that replaced a 6-hour manual report." },
+    { "requirement": "Spark for large-scale processing", "status": "met", "evidence": "Built **PySpark** jobs on AWS EMR processing 2.5 TB of claims data a day into Delta Lake tables." },
+    { "requirement": "Orchestration with Airflow", "status": "met", "evidence": "Runs 60+ **Airflow** pipelines with retries, SLAs and alerting; on-time delivery rose from 91% to 99.4%." },
+    { "requirement": "Snowflake and dbt in production", "status": "met", "evidence": "Layered **dbt** project of 140 models on **Snowflake**; warehouse spend cut 31% through clustering and incremental models." },
+    { "requirement": "Streaming ingestion with Kafka", "status": "met", "evidence": "Moved shipment events from nightly files to **Kafka** streams; dashboard freshness went from 24 hours to 6 minutes." },
+    { "requirement": "AWS (S3, Glue or EMR) and infrastructure as code with Terraform", "status": "met", "evidence": "Codified warehouse, S3 and Glue resources as **Terraform** modules with plans on every pull request." },
+    { "requirement": "Ownership of data quality testing and monitoring", "status": "met", "evidence": "**Data quality** tests on all 140 dbt models; failed-load incidents fell from about 9 a month to 2." },
+    { "requirement": "Lakehouse governance with Unity Catalog", "status": "partial", "evidence": "Writes **Delta Lake** tables with schema enforcement on EMR.", "note": "Unity Catalog itself is not yet on the record." },
+    { "requirement": "Leads on-call for the data platform", "status": "partial", "evidence": "Airflow SLAs and alerting are his to maintain.", "note": "He takes part in the rotation; he has not led it." },
+    { "requirement": "Mentoring other engineers; CI/CD for data projects", "status": "met", "evidence": "Mentors two engineers through review and pairing; GitHub Actions run tests and Terraform plans on every change." }
+  ],
+  "story": {
+    "title": "Nightly files to near-real-time, without a reporting outage",
+    "intro": "Operations dashboards ran a day behind. Alex moved ingestion to Kafka feed by feed and kept the old path live until each new one proved out.",
+    "trigger": { "label": "STARTING POINT", "text": "Nightly file loads left 300 users with day-old dashboards" },
+    "check": { "label": "MAPPED", "text": "14 source feeds sized for volume and freshness need" },
+    "stagesLabel": "MIGRATED FEED BY FEED, IN ORDER",
+    "stages": [
+      { "short": "PILOT", "long": "One feed" },
+      { "short": "DUAL", "long": "Old and new in parallel" },
+      { "short": "RECON", "long": "Row counts reconciled" },
+      { "short": "CUTOVER", "long": "Dashboards switched" },
+      { "short": "RETIRE", "long": "File path removed" }
+    ],
+    "outcome": "6-MINUTE FRESHNESS",
+    "throughline": "No reporting outage at any step; finance and operations signed off each cutover",
+    "postingLine": "streaming ingestion with Kafka"
+  },
+  "system": {
+    "title": "The platform, as the posting describes it",
+    "intro": "Sources land in Snowflake through Kafka and Spark. Alex's four duties sit on that path.",
+    "nodes": [
+      { "title": "Sources", "sub": "ERP, shipment and claims systems" },
+      { "title": "Kafka", "sub": "streams and Spark jobs" },
+      { "title": "Snowflake", "sub": "dbt models for BI" }
+    ],
+    "duties": [
+      { "title": "Monitor", "sub": "consumer lag and SLA alerts" },
+      { "title": "Test", "sub": "dbt data quality on 140 models" },
+      { "title": "Model", "sub": "staging, intermediate, marts" },
+      { "title": "Escalate", "sub": "source defects to owning teams" }
+    ],
+    "footer": "Failed-load incidents down from about 9 a month to 2 after the test suite went live."
+  },
+  "credentials": [
+    { "name": "AWS Certified Data Engineer, Associate", "note": "2024" },
+    { "name": "SnowPro Core Certification", "note": "2023" },
+    { "name": "B.S., Computer Science", "note": "Lakeview State University, 2014 to 2018" }
+  ],
+  "contact": [
+    "Austin, TX",
+    "(555) 010-4477",
+    { "label": "alex.rivera@example.com", "url": "mailto:alex.rivera@example.com" }
+  ],
+  "provenance": "Prepared from the candidate's resume and written answers. Every figure traces to that record; anything it does not support is marked partial or left off.",
+  "traitsTitle": "How he works, in the posting's own terms",
+  "traits": [
+    { "label": "Cross-functional", "text": "Works with finance, operations and actuarial teams that consume the models." },
+    { "label": "Ownership", "text": "Owns the Airflow SLAs and the data quality suite for the platform." },
+    { "label": "Cost awareness", "text": "Cut Snowflake spend 31% in two quarters through model redesign." },
+    { "label": "Mentoring", "text": "Two engineers mentored through code review and pairing." },
+    { "label": "Delivery", "text": "Leads sprint planning for the data platform backlog." },
+    { "label": "Open source", "text": "Published a reusable dbt test pack used across three projects." }
+  ],
+  "timeline": [
+    { "label": "B.S., Computer Science", "kind": "education", "start": "2014-08", "end": "2018-05", "dates": "2014 to 2018" },
+    { "label": "Data Analyst, Fabrikam Retail", "start": "2018-07", "end": "2020-05", "dates": "July 2018 to May 2020" },
+    { "label": "Data Engineer, Contoso Health", "start": "2020-06", "end": "2023-02", "dates": "June 2020 to Feb 2023" },
+    { "label": "Senior Data Engineer, Northwind Logistics", "start": "2023-03", "end": "present", "dates": "March 2023 to date" }
+  ],
+  "mustHaveKeywords": ["Python", "SQL", "Spark", "Airflow", "Snowflake", "dbt", "Kafka", "Terraform"]
+}

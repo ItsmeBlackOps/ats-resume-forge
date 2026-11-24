@@ -1,0 +1,125 @@
+  @page { size: Letter; margin: 0; }
+
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: var(--text); color: var(--ink); font-size: 9.5pt; line-height: 1.3; background: var(--stock); }
+  a { color: inherit; }
+  h1, h2, h3 { font-family: var(--display); margin: 0; font-weight: 700; }
+  p { margin: 0; }
+  ul { margin: 0; padding: 0; list-style: none; }
+
+  /* ---------- proof stock ---------- */
+  .sheet { position: relative; width: 8.5in; height: 11in; background: var(--stock); overflow: hidden; }
+  .sheet + .sheet { break-before: page; }
+  .chrome { position: absolute; inset: 0; width: 8.5in; height: 11in; pointer-events: none; }
+
+  .slug {
+    position: absolute; top: 0.2in; left: 0.45in; right: 0.45in; display: flex; justify-content: space-between; gap: 0.3in; white-space: nowrap;
+    font-family: var(--display); font-size: 6.3pt; letter-spacing: 0.012em; text-transform: uppercase; color: var(--ink-3);
+    font-variation-settings: "wdth" 82, "wght" 500;
+  }
+  .slug span + span::before { content: "|"; margin: 0 0.05in; color: var(--base); }
+  .slug .r { margin-left: auto; }
+  .slug .r::before { content: none; }
+
+  .artwork { position: absolute; top: 0.5in; left: 0.45in; right: 0.45in; bottom: 0.64in; }
+
+  /* ---------- colour control strip (legend) ---------- */
+  .strip {
+    position: absolute; left: 0.45in; right: 0.45in; bottom: 0.17in; height: 0.36in;
+    display: flex; align-items: flex-start; gap: 0.08in; font-family: var(--display); font-size: 6.2pt; color: var(--ink-3);
+    font-variation-settings: "wdth" 85, "wght" 500;
+  }
+  .strip .patch { flex: 1 1 0; min-width: 0; }
+  .strip .patch i { display: block; height: 0.13in; border: 0.5pt solid var(--base); margin-bottom: 0.03in; }
+  .strip .patch span { display: block; line-height: 1.15; }
+  .strip .sheetno { flex: 0 0 auto; align-self: flex-end; color: var(--ink); font-variation-settings: "wdth" 85, "wght" 700; }
+
+  /* ---------- principal panel ---------- */
+  .principal {
+    background: var(--spot); color: #fff; padding: 0.17in 0.26in 0.18in; display: grid; grid-template-columns: 1fr 2.2in; gap: 0.26in; align-items: start;
+  }
+  .principal h1 { font-size: 33pt; line-height: 0.92; letter-spacing: -0.012em; font-variation-settings: "wdth" 85, "wght" 700; margin: 0 0 5pt; color: #fff; }
+  .principal .role { font-family: var(--display); font-size: 12.5pt; line-height: 1.15; color: var(--on-spot-2); font-variation-settings: "wdth" 88, "wght" 600; margin: 0 0 6pt; }
+  .principal .fit { font-size: 9.3pt; line-height: 1.34; max-width: 62ch; color: #fff; }
+  .principal .fit strong { font-weight: 600; }
+
+  .check { border: 0.75pt solid rgba(255,255,255,.55); padding: 0.11in 0.13in 0.1in; color: #fff; }
+  .check h3 { font-size: 9.5pt; font-variation-settings: "wdth" 88, "wght" 700; margin: 0 0 5pt; padding-bottom: 3.5pt; border-bottom: 0.5pt solid rgba(255,255,255,.4); }
+  .check li { display: grid; grid-template-columns: 17px 1fr; gap: 6px; align-items: start; font-size: 8.2pt; line-height: 1.26; margin: 0 0 4pt; }
+  .check li:last-child { margin-bottom: 0; }
+  .check li svg { width: 16px; height: 16px; margin-top: 1px; }
+  .check li b { font-weight: 600; }
+
+  /* ---------- registration map ---------- */
+  .register { margin-top: 0.12in; border-collapse: collapse; width: 100%; table-layout: fixed; font-size: 8.7pt; line-height: 1.24; }
+  .register caption { text-align: left; font-family: var(--display); font-size: 12pt; font-variation-settings: "wdth" 88, "wght" 700; padding: 0 0 3pt; color: var(--ink); }
+  .register caption small { display: block; font-family: var(--text); font-size: 8pt; font-weight: 400; color: var(--ink-2); margin-top: 1.5pt; max-width: 75ch; }
+  .register col.c-req { width: 2.7in; }
+  .register col.c-mark { width: 0.74in; }
+  .register thead th { font-family: var(--display); font-size: 8pt; font-variation-settings: "wdth" 88, "wght" 700; text-align: left; color: var(--ink-2); padding: 2.5pt 6pt 2.5pt 0; border-bottom: 1pt solid var(--ink); }
+  .register thead th.mark { text-align: center; padding-left: 0; padding-right: 0; }
+  .register tbody th, .register tbody td { vertical-align: top; padding: 2.5pt 6pt 2.5pt 0; border-bottom: 0.5pt solid var(--rule); }
+  .register tbody th { font-weight: 600; text-align: left; color: var(--ink); padding-right: 10pt; }
+  .register tbody td.mark { text-align: center; padding: 3.4pt 2pt 2.6pt 0; }
+  .register tbody td.mark .in { display: inline-flex; flex-direction: column; align-items: center; gap: 1pt; }
+  .register tbody td.mark svg { width: 19px; height: 19px; }
+  .register tbody td.mark span { font-family: var(--display); font-size: 6.9pt; font-variation-settings: "wdth" 85, "wght" 600; color: var(--ink-2); white-space: nowrap; }
+  .register tbody td.ev { color: var(--ink); }
+  .register tbody td.ev .note { color: var(--ink-2); }
+  .register tbody tr:last-child th, .register tbody tr:last-child td { border-bottom: 1pt solid var(--ink); }
+
+  /* ---------- sheet 2 panels ---------- */
+  .panels { display: grid; grid-template-columns: 1fr 1fr; gap: 0.12in 0.26in; align-content: start; }
+  .panel { min-width: 0; }
+  .panel.wide { grid-column: 1 / -1; }
+  .panel h2 { font-size: 12pt; font-variation-settings: "wdth" 88, "wght" 700; line-height: 1.12; margin: 0 0 3pt; padding-top: 4pt; border-top: 1pt solid var(--ink); }
+  .panel h2 + p { color: var(--ink-2); font-size: 8.7pt; line-height: 1.32; margin: 0 0 5pt; max-width: 75ch; }
+  .panel .fig { display: block; width: 100%; height: auto; }
+  .panel .fig text { font-family: var(--text); }
+  .panel .fig .lab { font-family: var(--display); font-variation-settings: "wdth" 88, "wght" 700; }
+  .panel .fig .cap { font-family: var(--display); font-variation-settings: "wdth" 85, "wght" 500; }
+  .panel .foot { font-size: 8.4pt; color: var(--ink); line-height: 1.3; margin-top: 3pt; }
+
+  .how { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 0.22in; }
+  .how li { font-size: 8.4pt; line-height: 1.28; padding: 2.5pt 0 3.5pt; border-bottom: 0.5pt solid var(--rule); }
+  .how li:nth-last-child(-n+3) { border-bottom: 0; }
+  .how li b { display: block; font-family: var(--display); font-size: 8.6pt; font-variation-settings: "wdth" 88, "wght" 700; color: var(--spot); margin-bottom: 1pt; }
+
+  .creds li { display: grid; grid-template-columns: 17px 1fr; gap: 7px; align-items: start; font-size: 8.7pt; line-height: 1.26; padding: 2pt 0; border-bottom: 0.5pt solid var(--rule); }
+  .creds li:last-child { border-bottom: 0; }
+  .creds li svg { width: 16px; height: 16px; margin-top: 1px; }
+  .creds li b { font-weight: 600; }
+  .creds li small { color: var(--ink-2); font-size: 8.1pt; }
+
+  .contact { font-size: 8.7pt; line-height: 1.38; }
+  .contact .who { font-family: var(--display); font-size: 10pt; font-variation-settings: "wdth" 88, "wght" 700; }
+  .contact .prov { margin-top: 5pt; padding-top: 4pt; border-top: 0.5pt solid var(--rule); color: var(--ink-2); font-size: 8.1pt; line-height: 1.32; }
+
+  /* ---------- on-screen light table ---------- */
+  @media screen {
+    body { background: #c7cbc6; padding: 18px 12px 60px; }
+    .dlbar { width: 8.5in; margin: 0 auto 14px; display: flex; justify-content: space-between; align-items: center; font-family: var(--text); }
+    .dlbar .who { font-size: 13px; color: #2c2f2d; font-weight: 600; }
+    .dlbar a { font-size: 13px; font-weight: 600; text-decoration: none; color: #fff; background: var(--spot); padding: 8px 16px; border: 0; white-space: nowrap; }
+    .dlbar a:hover, .dlbar a:focus-visible { background: var(--mark); outline: none; }
+    .table { width: 8.5in; margin: 0 auto; transform-origin: top left; }
+    .sheet { box-shadow: 0 10px 30px rgba(0,0,0,.28), 0 1px 2px rgba(0,0,0,.2); }
+    .sheet + .sheet { margin-top: 26px; }
+    .register tbody tr:hover th, .register tbody tr:hover td { background: var(--wash); }
+    .fig .node:hover rect { stroke: #121212; stroke-width: 1.8; }
+    .fig .bar:hover rect { filter: brightness(1.1); }
+  }
+  @media screen and (prefers-reduced-motion: no-preference) {
+    /* one motion moment: rows settle into register */
+    .register tbody td .in { animation: settle 1s cubic-bezier(.16,1,.3,1) both; animation-delay: calc(var(--i) * 55ms + 240ms); }
+    @keyframes settle { from { transform: translateX(16px); opacity: .25; } to { transform: none; opacity: 1; } }
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .dlbar { display: none !important; }
+    .table { transform: none !important; width: auto !important; height: auto !important; margin: 0 !important; }
+    .sheet { box-shadow: none; margin: 0 !important; }
+    .register tbody td .in { animation: none !important; }
+  }
