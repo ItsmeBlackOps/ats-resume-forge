@@ -1,0 +1,11 @@
+{
+  "templates": [
+    { "name": "meridian", "accent": "#1f4e79", "description": "Centered masthead, navy headings with a full-width rule below." },
+    { "name": "ledger", "accent": "#0284c7", "description": "Left-aligned name, accent reserved for a hairline rule above each heading." },
+    { "name": "bandline", "accent": "#d97706", "description": "Full-bleed charcoal header band with white name and amber headings." },
+    { "name": "leader", "accent": "#b91c1c", "description": "Crimson headline, headings carry a trailing dotted leader." },
+    { "name": "quiet", "accent": "#111827", "description": "Monochrome, no rules, hierarchy by weight and size only." },
+    { "name": "tick", "accent": "#475569", "description": "Slate top stripe, split masthead, short accent tick under headings." },
+    { "name": "pill", "accent": "#5b21b6", "description": "Violet reversed-out pill headings, compact and modern." }
+  ]
+}

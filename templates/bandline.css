@@ -1,0 +1,7 @@
+.top { background: #22262b; padding-bottom: 0.15in; }
+.top h1 { color: #fff; }
+.top .headline { color: var(--accent); }
+.top .contact, .top .contact a { color: #e5e7eb; }
+.top .sep { color: #8b919a; }
+.body { padding-top: 0.04in; }
+h2 { color: var(--accent); }

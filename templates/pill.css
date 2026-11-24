@@ -1,0 +1,2 @@
+h2 { display: inline-block; background: var(--accent); color: #fff; padding: 1pt 7pt; border-radius: 3pt; font-size: calc(var(--fs) * 0.95); }
+.jt { color: var(--accent); }

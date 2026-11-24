@@ -1,0 +1,20 @@
+# Candidate data never leaves your machine
+candidates/
+out/
+site-*/
+.resumeforge/
+.vercel/
+*.docx
+resume.json
+*.resume.json
+!examples/sample-resume.json
+
+# Rendered files, except the fictional sample
+*.pdf
+!examples/output/*.pdf
+
+node_modules/
+.env
+.env.*
+.DS_Store
+Thumbs.db

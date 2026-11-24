@@ -1,0 +1,4 @@
+h2 { display: flex; align-items: center; gap: 8pt; }
+h2::after { content: ""; flex: 1 1 auto; border-top: 1.4pt dotted var(--accent); opacity: .55; }
+.jt { color: var(--accent); }
+.top { border-bottom: 2pt solid var(--accent); padding-bottom: 5pt; }

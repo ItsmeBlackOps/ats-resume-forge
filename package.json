@@ -1,0 +1,15 @@
+{
+  "name": "ats-resume-forge",
+  "version": "1.0.0",
+  "description": "Agent-ready ATS resume builder: resume.json to ATS-safe HTML, verified PDF and an optional Vercel site. Zero dependencies.",
+  "type": "module",
+  "bin": { "resumeforge": "bin/resumeforge.mjs" },
+  "scripts": {
+    "demo": "node bin/resumeforge.mjs all examples/sample-resume.json --out out/demo",
+    "lint:sample": "node bin/resumeforge.mjs lint examples/sample-resume.json"
+  },
+  "engines": { "node": ">=18" },
+  "keywords": ["resume", "ats", "pdf", "claude-code", "agent-skill", "vercel", "cv"],
+  "license": "MIT",
+  "author": "Harsh Patel"
+}

@@ -1,0 +1,78 @@
+{
+  "$comment": "FICTIONAL SAMPLE. Alex Rivera, every employer and every number here is invented for demonstration.",
+  "name": "Alex Rivera",
+  "headline": "Senior Data Engineer | Cloud Data Platforms | Streaming and Batch Pipelines",
+  "targetRole": "Senior Data Engineer",
+  "contact": [
+    "Austin, TX",
+    "(555) 010-4477",
+    { "label": "alex.rivera@example.com", "url": "mailto:alex.rivera@example.com" },
+    { "label": "linkedin.com/in/alex-rivera-example", "url": "https://www.linkedin.com/in/alex-rivera-example" }
+  ],
+  "page": "Letter",
+  "maxPages": 1,
+  "mustHaveKeywords": ["Python", "SQL", "Spark", "Airflow", "Snowflake", "dbt", "Kafka", "AWS", "Terraform", "data quality"],
+  "summary": "Data engineer with **6 years** building batch and streaming pipelines on **AWS**. Runs **Spark** and **dbt** transformations into **Snowflake**, orchestrated with **Airflow**, and owns the **data quality** checks that keep finance and operations reporting trustworthy. Moved a nightly reporting stack to near-real-time **Kafka** ingestion and cut warehouse spend by **31%** through model and clustering redesign.",
+  "skills": [
+    { "label": "Languages", "items": ["Python", "SQL", "Scala", "Bash"] },
+    { "label": "Data Platform", "items": ["Spark", "Snowflake", "dbt", "Airflow", "Kafka", "Delta Lake"] },
+    { "label": "Cloud and DevOps", "items": ["AWS", "S3", "Glue", "Terraform", "Docker", "GitHub Actions"] },
+    { "label": "Practices", "items": ["Data quality", "Data modeling", "CI/CD", "Agile"] }
+  ],
+  "experience": [
+    {
+      "title": "Senior Data Engineer",
+      "company": "Northwind Logistics",
+      "location": "Austin, TX",
+      "start": "Mar 2023",
+      "end": "Present",
+      "bullets": [
+        "Re-platformed shipment event ingestion from nightly files to **Kafka** streams landing in **Snowflake**, cutting dashboard freshness from **24 hours to 6 minutes** for 300+ operations users.",
+        "Designed a layered **dbt** project (staging, intermediate, marts) with **data quality** tests on 140 models; failed-load incidents fell from roughly **9 a month to 2**.",
+        "Rebuilt the cost model with clustering keys and incremental materializations, reducing **Snowflake** spend by **31%** in two quarters.",
+        "Codified warehouse, **S3** and **Glue** resources in **Terraform** modules with **GitHub Actions** plans on every pull request.",
+        "Mentor two engineers through code review and pairing; lead the team's **Agile** sprint planning for the data platform backlog."
+      ]
+    },
+    {
+      "title": "Data Engineer",
+      "company": "Contoso Health",
+      "location": "Remote",
+      "start": "Jun 2020",
+      "end": "Feb 2023",
+      "bullets": [
+        "Built **PySpark** jobs on **AWS** EMR processing **2.5 TB** of claims data a day, written as **Delta Lake** tables with schema enforcement.",
+        "Orchestrated 60+ pipelines in **Airflow** with retries, SLAs and alerting; on-time delivery of daily feeds rose from **91% to 99.4%**.",
+        "Owned **data modeling** for member, claim and provider facts: a dimensional schema used by finance, actuarial and compliance teams.",
+        "Containerized ingestion utilities with **Docker** and added **CI/CD** checks that run unit tests and **SQL** linting before deploy."
+      ]
+    },
+    {
+      "title": "Data Analyst",
+      "company": "Fabrikam Retail",
+      "location": "Dallas, TX",
+      "start": "Jul 2018",
+      "end": "May 2020",
+      "bullets": [
+        "Automated weekly sales reporting with **Python** and **SQL**, replacing a 6-hour manual spreadsheet process.",
+        "Wrote **Bash** and **Scala** utilities to reconcile point-of-sale exports against the inventory system."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Open-source dbt test pack",
+      "stack": "dbt, SQL",
+      "url": "https://github.com/example/dbt-test-pack",
+      "urlLabel": "github.com/example/dbt-test-pack",
+      "bullets": ["Published reusable freshness and referential tests; used by the team across 3 dbt projects."]
+    }
+  ],
+  "certifications": [
+    { "name": "AWS Certified Data Engineer, Associate", "date": "2024" },
+    { "name": "SnowPro Core Certification", "date": "2023" }
+  ],
+  "education": [
+    { "degree": "B.S., Computer Science", "school": "Lakeview State University", "location": "Austin, TX", "dates": "2014 to 2018" }
+  ]
+}

@@ -1,0 +1,5 @@
+.sheet { border-top: 6pt solid var(--accent); }
+.top { display: flex; justify-content: space-between; align-items: flex-end; gap: 16pt; flex-wrap: wrap; }
+.top .contact { text-align: right; max-width: 55%; }
+.top h1 + .headline { order: 3; flex-basis: 100%; }
+h2::after { content: ""; display: block; width: 28pt; border-top: 2pt solid var(--accent); margin-top: 2pt; }

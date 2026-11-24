@@ -1,0 +1,4 @@
+h1 { font-weight: 700; letter-spacing: 0; }
+.headline { color: #374151; font-weight: 400; font-style: normal; }
+h2 { text-transform: none; font-size: calc(var(--fs) * 1.18); letter-spacing: 0; margin-top: calc(var(--fs) * 0.95); }
+.row .rt { font-weight: 400; }
