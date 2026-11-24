@@ -37,7 +37,7 @@ Use `references/jd-decomposition.md` and `references/jd-signal-universe.md`: req
 ### 4. Gap map and questions
 Score each requirement as met, partial, or missing (`references/scoring-rubric.md`). For every partial or missing item that the candidate might genuinely have, ask a targeted question in interviewer style ("What volume of tickets did you handle per week, and in which tool?"). Keep questions minimal and grouped. Do not proceed on guesses.
 
-### 5. Write `resume.json`
+### 5. Write `candidates/<name>.json`
 Follow `references/tailoring-rules.md` and `references/resume-json.md`:
 - Headline: target role in the job's own words plus two or three true specialties.
 - Summary: years of experience, core stack, two quantified wins, in three or four sentences.

@@ -13,7 +13,7 @@ const HISTORY = resolve(".resumeforge", "history.json");
 const HELP = `resumeforge: resume.json -> ATS-safe HTML -> verified PDF -> optional Vercel site
 
 Usage
-  resumeforge init [file]                 copy the sample resume.json to start from
+  resumeforge init [file]                 copy the sample to candidates/resume.json (gitignored)
   resumeforge templates                   list templates (and which you have used here)
   resumeforge lint <resume.json>          content checks: unevidenced skills, dashes, long bullets
   resumeforge html <resume.json> [opts]   write the HTML only
@@ -139,8 +139,9 @@ function main() {
   try {
     switch (cmd) {
       case "init": {
-        const dest = resolve(target ?? "resume.json");
+        const dest = resolve(target ?? join("candidates", "resume.json"));
         if (existsSync(dest)) throw new Error(`${dest} already exists`);
+        mkdirSync(dirname(dest), { recursive: true });
         copyFileSync(join(ROOT, "examples", "sample-resume.json"), dest);
         console.log(`wrote ${dest}; replace the fictional sample with real, evidenced content`);
         break;

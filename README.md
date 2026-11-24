@@ -19,10 +19,10 @@ Live demo (fictional candidate): https://ats-resume-forge-demo.vercel.app
 ```bash
 git clone https://github.com/ItsmeBlackOps/ats-resume-forge.git
 cd ats-resume-forge
-node bin/resumeforge.mjs init my-resume.json      # copies the fictional sample
-# edit my-resume.json with your real, evidenced content
-node bin/resumeforge.mjs lint my-resume.json
-node bin/resumeforge.mjs pdf my-resume.json --out out/me
+node bin/resumeforge.mjs init candidates/me.json   # copies the fictional sample
+# edit candidates/me.json with your real, evidenced content
+node bin/resumeforge.mjs lint candidates/me.json
+node bin/resumeforge.mjs pdf candidates/me.json --out out/me
 ```
 
 Optional: `npm link` once, then use `resumeforge` anywhere.
@@ -31,7 +31,7 @@ Optional: `npm link` once, then use `resumeforge` anywhere.
 
 | Command | What it does |
 |---|---|
-| `init [file]` | Copy the sample `resume.json` to start from |
+| `init [file]` | Copy the sample into `candidates/` (gitignored) to start from |
 | `templates` | List templates and how often you have used each in this folder |
 | `lint <resume.json>` | Content checks: unevidenced skills, dashes, long bullets, bullet balance |
 | `html <resume.json>` | Write the HTML only |
@@ -78,7 +78,7 @@ The skill is strict on purpose. A resume that wins a screen and loses the interv
 
 ## Privacy
 
-This repository contains **no real resumes**. The only candidate in it, Alex Rivera, is fictional, as are every employer and number in the sample. Your own files stay on your machine: `candidates/`, `out/`, `resume.json`, generated PDFs and `.resumeforge/` are all gitignored. Deployed sites send `X-Robots-Tag: noindex, nofollow`, but anyone with the link can still open them, so share links deliberately.
+This repository contains **no real resumes**. The only candidate in it, Alex Rivera, is fictional, as are every employer and number in the sample. Your own files stay on your machine: keep resumes in `candidates/` (where `init` puts them). `candidates/`, `out/`, `resume.json`, generated PDFs and `.resumeforge/` are all gitignored. Deployed sites send `X-Robots-Tag: noindex, nofollow`, but anyone with the link can still open them, so share links deliberately.
 
 ## Templates
 
